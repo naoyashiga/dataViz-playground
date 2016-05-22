@@ -36,8 +36,8 @@
     "bower-files": "^3.11.3",
     "browser-sync": "^2.11.1",
     "del": "^2.2.0",
-    "eslint": "^1.10.3",
-    "eslint-config-airbnb": "^4.0.0",
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^8.0.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.1",
@@ -45,7 +45,7 @@
     "gulp-rimraf": "^0.2.0",
     "gulp-sequence": "^0.4.5",
     "gulp-uglify": "^1.5.2",
-    "rollup": "^0.25.1",
+    "rollup": "^0.26.1",
     "rollup-plugin-babel": "^2.3.9"
   }
 }
