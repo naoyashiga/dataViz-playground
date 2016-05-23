@@ -4,13 +4,12 @@ import Circle from './Circle';
 export default class Visualization {
   constructor(cb) {
     const _this = this;
-    this.svg = this.createViz();
-    this.objects = [];
-    this.svg.on('mousedown', function () {
-      const mouseCoordinates = d3.mouse(this);
-      // _this.addCircle(mouseCoordinates);
-    });
 
+    this.margin = {top: 50, right: 0, bottom: 0, left: 50};
+
+    this.width = window.innerWidth - this.margin.left - this.margin.right,
+    this.height = window.innerHeight - this.margin.top - this.margin.bottom;
+    this.svg = this.createViz();
     this.scatterPlot();
 
     // Callback onLoaded
@@ -18,16 +17,14 @@ export default class Visualization {
   }
 
   scatterPlot() {
-    var width = window.innerWidth;
-    var height = window.innerHeight;
 
     var x = d3.scale.linear()
-        .domain([70, 120])
-        .range([0, width]);
+        .domain([0, 120])
+        .range([0, this.width - 30]);
 
     var y = d3.scale.linear()
-        .domain([70, 120])
-        .range([height, 0]);
+        .domain([0, 120])
+        .range([this.height - 100, 0]);
 
     var color = d3.scale.category10();
 
@@ -51,19 +48,22 @@ export default class Visualization {
       // y.domain(d3.extent(data, function(d) { return d.sepalLength; })).nice();
 
 
+      var xAxisTranslate = this.height - this.margin.bottom - 100;
       this.svg.append("g")
               .attr("class", "x axis")
-              .attr("transform", "translate(0," + height + ")")
+              .attr("transform", "translate(0," + xAxisTranslate + ")")
+              // .attr("transform", "translate(0," + -this.margin.bottom + ")")
               .call(xAxis)
             .append("text")
               .attr("class", "label")
-              .attr("x", width)
+              .attr("x", this.width - 50)
               .attr("y", -6)
               .style("text-anchor", "end")
               .text("Bust (cm)");
 
       this.svg.append("g")
               .attr("class", "y axis")
+              // .attr("transform", "translate(0," + -this.margin.bottom + ")")
               .call(yAxis)
             .append("text")
               .attr("class", "label")
@@ -90,7 +90,10 @@ export default class Visualization {
   createViz() {
     return d3.select('body')
       .append('svg')
-      .attr('width', window.innerWidth)
-      .attr('height', window.innerHeight);
+        .attr('width', this.width)
+        .attr('height', this.height)
+      .append("g")
+        // .attr("transform", "translate(" + this.margin.left + ",0)");
+        .attr("transform", "translate(" + this.margin.left + "," + (this.margin.top) + ")");
   }
 }
