@@ -17,7 +17,7 @@ var replace = require('gulp-replace');
 
 var reload = browserSync.reload;
 
-var workingDir = "test/";
+var workingDir = "sketch/tutorial/hierarchies/tree/";
 
 // Browser
 gulp.task('browser-sync', function() {
