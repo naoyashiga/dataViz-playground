@@ -1,6 +1,6 @@
 export default class Circle {
   constructor(parentNode) {
     this.element = parentNode.append("circle")
-    .attr("r", 2.5);
+    .attr("r", 8);
   }
 }

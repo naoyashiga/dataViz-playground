@@ -3,15 +3,15 @@
   padding: 0;
 }
 .node circle {
-  fill: #999;
+  fill: #b6007a;
 }
 
 .node text {
-  font: 10px sans-serif;
+  font: 20px sans-serif;
 }
 
 .node--internal circle {
-  fill: #555;
+  /*fill: #555;*/
 }
 
 .node--internal text {
@@ -21,6 +21,6 @@
 .link {
   fill: none;
   stroke: #555;
-  stroke-opacity: 0.4;
-  stroke-width: 1.5px;
+  stroke-opacity: 1;
+  stroke-width: 4px;
 }

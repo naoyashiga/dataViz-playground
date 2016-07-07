@@ -2,6 +2,9 @@ export default class Link {
   constructor(parentSvg, root) {
     this.element = parentSvg.selectAll(".link")
     .data(root.descendants().slice(1))
+    // .data(root.descendants().slice(1).filter(function(d) {
+    //   return d.depth > 1;
+    // }))
     .enter().append("path")
     .attr("class", "link")
     .attr("d", function(d) {
