@@ -1,15 +1,20 @@
 import gulp from 'gulp'
-import rollup from 'rollup';
 
+// js
+import rollup from 'rollup';
 import bower from 'bower-files';
 import concat from 'gulp-concat';
 import compressJs from 'gulp-uglify';
 
+// sass
 import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
 import autoprefixer from 'gulp-autoprefixer';
 import compressCss from 'gulp-cssnano';
 import plumber from 'gulp-plumber';
+
+// html
+import replace from 'gulp-replace';
 
 import config from '../config';
 import onError from '../utils/handleErrors';
@@ -48,4 +53,18 @@ gulp.task('build:sass', () => {
   // .pipe(sourcemaps.write('./maps', { addComment: false }))
   .pipe(autoprefixer(autoprefixerOptions))
   .pipe(gulp.dest(config.sass.build));
+});
+
+const envReplace = (env) => {
+  return gulp.src([config.html.src])
+    .pipe(replace('__REPLACE_ENV__', env))
+    .pipe(gulp.dest(config.html.replace.build));
+}
+
+gulp.task('build:html:dev', () => {
+  return envReplace('development');
+});
+
+gulp.task('build:html:dist', () => {
+  return envReplace('production');
 });

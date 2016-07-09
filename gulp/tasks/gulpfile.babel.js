@@ -13,12 +13,12 @@ import gulpSequence from 'gulp-sequence';
 
 import browserSync from 'browser-sync';
 
-import compressJs from 'gulp-uglify';
+// import compressJs from 'gulp-uglify';
 // import compressCss from 'gulp-cssnano';
 import rimraf from 'gulp-rimraf';
 
 // import concat from 'gulp-concat';
-import replace from 'gulp-replace';
+// import replace from 'gulp-replace';
 
 // import plumber from 'gulp-plumber';
 
@@ -41,11 +41,6 @@ gulp.task('watch', () => {
   gulp.watch(config.datasets.src, ['move:datasets', reload]);
 });
 
-// Javascript VENDOR
-
-
-// Javascript VENDOR
-
 // COMPRESSION
 gulp.task('compress:js', ['clean:map'], () => {
   return gulp.src(config.js.compress.src)
@@ -58,41 +53,6 @@ gulp.task('compress:css', () => {
     .pipe(compressCss())
     .pipe(gulp.dest(config.sass.compress.build));
 });
-
-// HTML
-var envReplace = function (env) {
-  return gulp.src([config.html.src])
-    .pipe(replace('__REPLACE_ENV__', env))
-    .pipe(gulp.dest(config.html.replace.build));
-}
-
-gulp.task('build:html:dev', () => {
-  return envReplace('development');
-});
-
-gulp.task('build:html:dist', () => {
-  return envReplace('production');
-});
-
-const sassOptions = {
-  outputStyle: 'expanded'
-};
-
-const autoprefixerOptions = {
-  browsers: ['last 2 versions']
-};
-
-// CSS
-// gulp.task('build:sass', () => {
-//   return gulp.src(config.sass.src)
-//   .pipe(plumber({ errorHandler: onError }))
-//   .pipe(sourcemaps.init())
-//   .pipe(sass(sassOptions))
-//   .pipe(sourcemaps.write())
-//   // .pipe(sourcemaps.write('./maps', { addComment: false }))
-//   .pipe(autoprefixer(autoprefixerOptions))
-//   .pipe(gulp.dest(config.sass.build));
-// });
 
 // Datasets
 gulp.task('move:datasets', () => {
