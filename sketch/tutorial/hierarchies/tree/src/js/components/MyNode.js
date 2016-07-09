@@ -6,7 +6,7 @@ export default class MyNode {
     //   return d.height >= 1;
     // }))
     .enter().append("g")
-    .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--leaf"); })
-    .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+    .attr("class", (d) => "node" + (d.children ? " node--internal" : " node--leaf"))
+    .attr("transform", (d) => "translate(" + d.y + "," + d.x + ")");
   }
 }
