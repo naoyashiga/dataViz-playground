@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var gulpSequence = require('gulp-sequence');
 
 const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
 
 var bower = require('bower-files');
 var rollup = require('rollup');
@@ -26,8 +27,10 @@ const onError = function(error) {
   notifier.notify({
     message: error.message,
     title: error.plugin,
-    sound: 'Glass'
+    sound: 'Pop'
   });
+  console.log(error);
+  this.emit('end')
 };
 
 // server
@@ -113,11 +116,20 @@ gulp.task('build:html:dist', function() {
   return envReplace('production');
 });
 
+const sassOptions = {
+  outputStyle: 'expanded'
+};
+
 // CSS
 gulp.task('build:sass', function() {
   return gulp.src('./' + workingDir + 'src/sass/*.scss')
-  .pipe(sass())
+  .pipe(plumber({ errorHandler: onError }))
+  .pipe(sourcemaps.init())
+  .pipe(sass(sassOptions))
+  // .pipe(sourcemaps.write())
+  .pipe(sourcemaps.write('./maps'))
   .pipe(gulp.dest(workingDir + 'build/css'));
+  // .pipe(browserSync.stream());
   // .pipe(reload({stream:true}));
 });
 

@@ -2,14 +2,19 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  background: #fff;
+}
+
 .node circle {
   fill: #b6007a;
 }
 
+
 .node text {
   font: 20px sans-serif;
 }
-
 .node--internal circle {
   /*fill: #555;*/
 }

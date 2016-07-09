@@ -12,6 +12,6 @@ export default class Link {
       + "C" + (d.y + d.parent.y) / 2 + "," + d.x
       + " " + (d.y + d.parent.y) / 2 + "," + d.parent.x
       + " " + d.parent.y + "," + d.parent.x;
-    });
+    })
   }
 }
