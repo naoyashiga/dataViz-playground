@@ -4,6 +4,7 @@ var gulpSequence = require('gulp-sequence');
 
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('gulp-autoprefixer');
 
 var bower = require('bower-files');
 var rollup = require('rollup');
@@ -120,17 +121,20 @@ const sassOptions = {
   outputStyle: 'expanded'
 };
 
+const autoprefixerOptions = {
+  browsers: ['last 2 versions']
+};
+
 // CSS
 gulp.task('build:sass', function() {
   return gulp.src('./' + workingDir + 'src/sass/*.scss')
   .pipe(plumber({ errorHandler: onError }))
   .pipe(sourcemaps.init())
   .pipe(sass(sassOptions))
-  // .pipe(sourcemaps.write())
-  .pipe(sourcemaps.write('./maps'))
+  .pipe(sourcemaps.write())
+  // .pipe(sourcemaps.write('./maps', { addComment: false }))
+  .pipe(autoprefixer(autoprefixerOptions))
   .pipe(gulp.dest(workingDir + 'build/css'));
-  // .pipe(browserSync.stream());
-  // .pipe(reload({stream:true}));
 });
 
 // Datasets
