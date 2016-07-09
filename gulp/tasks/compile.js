@@ -19,7 +19,7 @@ import replace from 'gulp-replace';
 import config from '../config';
 import onError from '../utils/handleErrors';
 
-gulp.task('build:js:main', () => {
+gulp.task(config.task.build.js.main, () => {
  return rollup
  .rollup(config.rollup.read)
  .then( function ( bundle ) {
@@ -28,7 +28,7 @@ gulp.task('build:js:main', () => {
 });
 
 
-gulp.task('build:js:vendor', () => {
+gulp.task(config.task.build.js.vendor, () => {
   const lib = bower();
   return gulp.src(lib.ext('js').files)
     .pipe(concat('vendor.js'))
@@ -44,7 +44,7 @@ const autoprefixerOptions = {
   browsers: ['last 2 versions']
 };
 
-gulp.task('build:sass', () => {
+gulp.task(config.task.build.sass, () => {
   return gulp.src(config.sass.src)
   .pipe(plumber({ errorHandler: onError }))
   .pipe(sourcemaps.init())
@@ -61,10 +61,10 @@ const envReplace = (env) => {
     .pipe(gulp.dest(config.html.replace.build));
 }
 
-gulp.task('build:html:dev', () => {
+gulp.task(config.task.build.html.dev, () => {
   return envReplace('development');
 });
 
-gulp.task('build:html:dist', () => {
+gulp.task(config.task.build.html.dist, () => {
   return envReplace('production');
 });
