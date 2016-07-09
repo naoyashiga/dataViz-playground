@@ -62,5 +62,25 @@ module.exports = {
     clean: {
       build: './' + workingDir + 'build/*',
       map: './' + workingDir + 'build/js/*.js.map',
+    },
+    task: {
+      build: {
+        js: {
+          main: 'build:js:main',
+          vendor: 'build:js:vendor'
+        },
+        sass: 'build:sass',
+        html: {
+          dev: 'build:html:dev',
+          dist: 'build:html:dist'
+        }
+      },
+      compress: {
+        js: 'compress:js',
+        css: 'compress:css',
+      },
+      move: {
+        datasets: 'move:datasets'
+      }
     }
   };
