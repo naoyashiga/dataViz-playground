@@ -21,14 +21,14 @@ gulp.task('compress',
   config.task.compress.css
 ]);
 
-// gulp.task('default', gulpSequence('browser-sync', 'watch'));
-gulp.task('default',
-gulpSequence(
-  'clean',
-  [config.task.build.html.dev, 'build:assets'],
-  'browser-sync',
-  'watch'
-));
+gulp.task('default', gulpSequence('browser-sync', 'watch'));
+// gulp.task('default',
+// gulpSequence(
+//   'clean',
+//   [config.task.build.html.dev, 'build:assets'],
+//   'browser-sync',
+//   'watch'
+// ));
 
 gulp.task('dist',
 gulpSequence(

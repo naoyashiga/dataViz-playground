@@ -1,10 +1,13 @@
 export default class Screen {
-  constructor(w, h, margin) {
+  constructor(width, height, margin) {
     this.element = d3.select('body')
     .append('svg')
-    .attr('width', w)
-    .attr('height', h)
+    .attr('width', width)
+    .attr('height', height)
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("class", "myGraph")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
   }
+
+
 }

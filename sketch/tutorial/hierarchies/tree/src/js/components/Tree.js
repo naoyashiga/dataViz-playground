@@ -1,7 +1,7 @@
 export default class Tree {
   constructor(w, h) {
     this.element = d3.tree()
-    .size([h, w - 400]);
+    .size([h, 700]);
 
     this.root = null;
   }
