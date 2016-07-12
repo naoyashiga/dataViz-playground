@@ -29,11 +29,9 @@ export default class Visualization {
       this.circle = this.createCircle();
       this.text = this.createText();
 
-      var t = d3.transition()
-      .duration(750)
-      .ease(d3.easeLinear);
 
-      d3.selectAll(".myGraph").transition(t).size([this.width / 3, this.height]);
+
+
 
 
 
