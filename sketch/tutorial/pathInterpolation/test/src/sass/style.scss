@@ -11,6 +11,13 @@ a {
   display: flex;
 }
 
+.myPath {
+  fill: none;
+  stroke: #555;
+  stroke-opacity: 1;
+  stroke-width: 4px;
+}
+
 .node circle {
   fill: #b6007a;
 }
