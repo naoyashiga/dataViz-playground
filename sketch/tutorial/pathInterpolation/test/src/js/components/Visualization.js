@@ -1,10 +1,4 @@
-import config from '../config';
 import Screen from './Screen';
-import Link from './Link';
-import MyNode from './MyNode';
-import Text from './Text';
-import Circle from './Circle';
-import Tree from './Tree';
 
 export default class Visualization {
   constructor(cb) {
@@ -25,8 +19,6 @@ export default class Visualization {
     .map(d3.randomUniform(this.height));
 
     const particles = d3.zip(posX, posY);
-
-    console.log(particles);
 
     this.path = this.svg.append("path")
     .data([particles])
@@ -60,35 +52,13 @@ export default class Visualization {
   }
 
   translateAlong(path) {
-    // console.log(path.getTotalLength());
     var l = path.getTotalLength();
     return function(d, i, a) {
-      // console.log(d);
-      // console.log(i);
-      // console.log(a);
-
-      let offset = Math.floor(l / a.length);
       return function(t) {
         var p = path.getPointAtLength(t * l);
         return "translate(" + p.x + "," + p.y + ")";
       };
     };
-  }
-
-  createLink() {
-    return new Link(this.svg, this.root).element;
-  }
-
-  createNode() {
-    return new MyNode(this.svg, this.root).element;
-  }
-
-  createCircle() {
-    return new Circle(this.node).element;
-  }
-
-  createText() {
-    return new Text(this.node).element;
   }
 
   createViz() {
