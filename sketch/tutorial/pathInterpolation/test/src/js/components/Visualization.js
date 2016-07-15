@@ -42,9 +42,13 @@ export default class Visualization {
     .attr("r", 4)
     .attr("transform", function(d) { return "translate(" + d + ")"; });
 
-    this.circle = this.svg.append("circle")
+    this.circle = this.svg.selectAll(".point")
+    .data(d3.range(points.length))
+    .enter().append("circle")
     .attr("r", 13)
-    .attr("transform", "translate(" + points[0] + ")");
+    .attr("transform", (d, i) => {
+      return "translate(" + points[i] + ")";
+    });
 
     this.transition();
 
@@ -54,16 +58,23 @@ export default class Visualization {
   transition() {
     this.circle.transition()
     .duration(3000)
+    .delay(function(d, i) { return i * 50; })
     .attrTween("transform", this.translateAlong(this.path.node()))
     .on("end", () => {
       this.transition();
     });
-    
+
   }
 
   translateAlong(path) {
+    // console.log(path.getTotalLength());
     var l = path.getTotalLength();
     return function(d, i, a) {
+      // console.log(d);
+      // console.log(i);
+      // console.log(a);
+
+      let offset = Math.floor(l / a.length);
       return function(t) {
         var p = path.getPointAtLength(t * l);
         return "translate(" + p.x + "," + p.y + ")";
