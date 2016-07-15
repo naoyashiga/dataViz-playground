@@ -10,12 +10,13 @@ export default class Visualization {
 
     this.svg = this.createViz();
 
-    const particleLength = 4;
+    const vertexLength = 4;
+    const particleLength = 30;
 
-    const posX = d3.range(particleLength)
+    const posX = d3.range(vertexLength)
     .map(d3.randomUniform(0, this.width));
 
-    const posY = d3.range(particleLength)
+    const posY = d3.range(vertexLength)
     .map(d3.randomUniform(this.height));
 
     const particles = d3.zip(posX, posY);
@@ -27,7 +28,7 @@ export default class Visualization {
     // .attr("d", d3.line().curve(d3.curveCardinal.tension(0.5)));
 
     this.circle = this.svg.selectAll(".point")
-    .data(d3.range(30))
+    .data(d3.range(particleLength))
     .enter().append("circle")
     .attr("r", 3)
     .attr("class", "particle")
