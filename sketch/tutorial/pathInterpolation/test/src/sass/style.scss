@@ -4,7 +4,7 @@
 }
 
 body {
-  background: #fff;
+  background: #581845;
 }
 
 a {
@@ -13,31 +13,11 @@ a {
 
 .myPath {
   fill: none;
-  stroke: #555;
-  stroke-opacity: 1;
-  stroke-width: 4px;
+  stroke: #FF5733;
+  stroke-opacity: 0.2;
+  stroke-width: 2px;
 }
 
-.node circle {
-  fill: #b6007a;
-}
-
-
-.node text {
-  font: 20px sans-serif;
-}
-.node--internal circle {
-  /*fill: #555;*/
-}
-
-.node--internal text {
-  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
-}
-
-.link {
-  fill: none;
-  stroke: #555;
-  stroke-opacity: 1;
-  stroke-width: 4px;
-
+.particle {
+  fill: #FF5733;
 }
