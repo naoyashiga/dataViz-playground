@@ -1,6 +1,6 @@
 import babel from 'rollup-plugin-babel';
 
-const workingDir = "sketch/tutorial/pathInterpolation/test/";
+const workingDir = "sketch/tutorial/poissonDisc/simple/";
 
 const rollupRead = {
   entry: './' + workingDir + 'src/js/index.js',
