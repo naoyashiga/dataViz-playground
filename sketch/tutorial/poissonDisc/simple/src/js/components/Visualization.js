@@ -10,21 +10,43 @@ export default class Visualization {
 
     this.svg = this.createViz();
 
-    this.sample = this.poissonDiscSampler(this.width, this.height, 10);
+    this.sample = this.poissonDiscSampler(this.width, this.height, 20);
 
-    d3.timer(() => {
+    var myTransition = d3.transition()
+    .duration(3000);
+    // .ease(d3.easeBounce);
+    // .ease(d3.easeCircleInOut);
+
+    this.timer = d3.interval(() => {
       for (var i = 0; i < 1; ++i) {
         var s = this.sample();
         // console.log(s);
-        if (!s) return true;
-        this.svg.append("circle")
-        .attr("cx", s[0])
-        .attr("cy", s[1])
-        .attr("r", 0)
+        if (!s) {
+          console.log("owari");
+          this.timer.stop();
+          return true;
+        }
+        // this.svg.append("circle")
+        // .attr("cx", s[0])
+        // .attr("cy", s[1])
+        // .attr("r", 0)
+        // .transition()
+        // .duration(500)
+        // .attr("r", 1);
+
+        this.svg.append("text")
+        .attr("x", s[0])
+        .attr("y", s[1])
+        .attr("class", "typo")
+        .text("草")
+        .style("font-size", "0")
+        .style("opacity", "0")
         .transition()
-        .attr("r", 2);
+        // .delay(1000)
+        .style("opacity", "1")
+        .style("font-size", "30px");
       }
-    });
+    }, 30);
 
     cb();
   }
