@@ -22,29 +22,29 @@ export default class Visualization {
         var s = this.sample();
         // console.log(s);
         if (!s) {
-          console.log("owari");
+          // console.log("owari");
           this.timer.stop();
           return true;
         }
-        // this.svg.append("circle")
-        // .attr("cx", s[0])
-        // .attr("cy", s[1])
-        // .attr("r", 0)
-        // .transition()
-        // .duration(500)
-        // .attr("r", 1);
-
-        this.svg.append("text")
-        .attr("x", s[0])
-        .attr("y", s[1])
-        .attr("class", "typo")
-        .text("草")
-        .style("font-size", "0")
-        .style("opacity", "0")
+        this.svg.append("circle")
+        .attr("cx", s[0])
+        .attr("cy", s[1])
+        .attr("r", 0)
         .transition()
-        // .delay(1000)
-        .style("opacity", "1")
-        .style("font-size", "30px");
+        // .duration(500)
+        .attr("r", 5);
+
+        // this.svg.append("text")
+        // .attr("x", s[0])
+        // .attr("y", s[1])
+        // .attr("class", "typo")
+        // .text("草")
+        // .style("font-size", "0")
+        // .style("opacity", "0")
+        // .transition()
+        // // .delay(1000)
+        // .style("opacity", "1")
+        // .style("font-size", "30px");
       }
     }, 30);
 
@@ -52,7 +52,7 @@ export default class Visualization {
   }
 
   poissonDiscSampler(width, height, radius) {
-    var k = 30,
+    var k = 10,
     radius2 = radius * radius,
     R = 3 * radius2,
     cellSize = radius * Math.SQRT1_2,
@@ -65,6 +65,7 @@ export default class Visualization {
 
     return () => {
       if(!sampleSize) return sample(Math.random() * width, Math.random() * height);
+      console.log(queueSize);
 
       while (queueSize) {
         var i = Math.random() * queueSize | 0,
@@ -77,7 +78,9 @@ export default class Visualization {
           x = s[0] + r * Math.cos(a),
           y = s[1] + r * Math.sin(a);
 
-          if (0 <= x && x < width && 0 <= y && y < height && far(x, y)) return sample(x, y);
+          if (0 <= x && x < width && 0 <= y && y < height && far(x, y)) {
+            return sample(x, y);
+          }
         }
 
         queue[i] = queue[--queueSize];
