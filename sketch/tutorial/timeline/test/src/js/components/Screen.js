@@ -5,12 +5,11 @@ export default class Screen {
     .attr('width', width)
     .attr('height', height);
 
-
-    var x = d3.scaleLinear()
-    .domain([9.5, 10.0])
+    this.xRange = d3.scaleLinear()
+    .domain([10.0, 9.5])
     .range([0, width]);
 
-    var xAxis = d3.axisBottom(x).ticks(10);
+    var xAxis = d3.axisBottom(this.xRange).ticks(10);
 
     this.graph = this.element.append("g")
     .attr("class", "x axis myGraph")

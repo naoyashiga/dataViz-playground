@@ -1,4 +1,5 @@
 import Screen from './Screen';
+import Circle from './Circle';
 
 export default class Visualization {
   constructor(cb) {
@@ -19,7 +20,7 @@ export default class Visualization {
 
       console.log(this.record);
 
-      // this.circle = this.createCircle();
+      this.circle = this.createCircle();
 
     });
 
@@ -33,7 +34,7 @@ export default class Visualization {
   }
 
   createCircle() {
-    return new Circle(this.svg.graph, this.record);
+    return new Circle(this.svg.graph, this.record, this.svg.xRange);
   }
 
   loadJSON(callback) {
