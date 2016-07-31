@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #fff;
+}
+
+a {
+  display: flex;
+}
+
+.myPath {
+  fill: none;
+  stroke: #FF5733;
+  stroke-opacity: 0.2;
+  stroke-width: 2px;
+}
+
+.particle {
+  fill: #FF5733;
+}

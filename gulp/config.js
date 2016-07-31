@@ -4,7 +4,7 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import buble from 'rollup-plugin-buble';
 
 
-const workingDir = "sketch/tutorial/request/test/";
+const workingDir = "sketch/tutorial/timeline/test/";
 
 // const rollupRead = {
 //   entry: './' + workingDir + 'src/js/index.js',
