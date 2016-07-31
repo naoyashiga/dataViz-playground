@@ -1,12 +1,35 @@
 import babel from 'rollup-plugin-babel';
+import commonjs from 'rollup-plugin-commonjs';
+import nodeResolve from 'rollup-plugin-node-resolve';
+import buble from 'rollup-plugin-buble';
 
-const workingDir = "sketch/tutorial/poissonDisc/simple/";
+
+const workingDir = "sketch/tutorial/request/test/";
+
+// const rollupRead = {
+//   entry: './' + workingDir + 'src/js/index.js',
+//   plugins: [
+//           buble({
+//             exclude: './node_modules/**'
+//           })
+//         ]
+//       };
 
 const rollupRead = {
   entry: './' + workingDir + 'src/js/index.js',
   plugins: [
+    // nodeResolve({
+    //   jsnext: true,
+    //   main: true
+    // }),
+    // commonjs({
+    //   include: 'node_modules/**',
+    //   sourceMap: true,
+    //   namedExports: {d3: ['d3']}
+    // }),
     babel({
       babelrc: false,
+      exclude: 'node_modules/**',
       presets: ["es2015-rollup"],
       runtimeHelpers: true
     })
