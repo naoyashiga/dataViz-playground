@@ -4,14 +4,14 @@ import Circle from './Circle';
 export default class Visualization {
   constructor(cb) {
 
-    this.margin = {top: 10, right: 10, bottom: 0, left: 0};
+    this.margin = {top: 10, right: 10, bottom: 100, left: 100};
 
     this.width = window.innerWidth - this.margin.left - this.margin.right,
-    this.height = window.innerHeight - this.margin.top - this.margin.bottom;
+    this.height = window.innerHeight;
 
     this.svg = this.createViz();
 
-    this.record = null;
+    this.data = null;
 
     this.circle = null;
 
@@ -30,7 +30,7 @@ export default class Visualization {
       d3.json(url, (error, data) => {
         if (error) throw error;
 
-        this.record = data["results"];
+        this.data = data["results"];
 
         resolve();
       });
@@ -48,7 +48,7 @@ export default class Visualization {
   }
 
   createCircle() {
-    return new Circle(this.svg.graph, this.record, this.svg.xRange);
+    return new Circle(this.svg.graph, this.data, this.svg.xRange);
   }
 
 }
