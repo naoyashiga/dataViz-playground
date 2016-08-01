@@ -16,7 +16,7 @@ export default class Visualization {
 
     this.circle = null;
 
-    this.loadJSON(() => {
+    this.loadData(() => {
 
       console.log(this.record);
 
@@ -35,14 +35,16 @@ export default class Visualization {
     return new Circle(this.svg.graph, this.record, this.svg.xRange);
   }
 
-  loadJSON(callback) {
-    let url = './datasets/data.json';
+  loadData(callback) {
+    let url = './datasets/stocks.csv';
 
-    d3.json(url, (error, data) => {
+    d3.csv(url, (error, data) => {
       if (error) throw error;
 
-      this.record = data["record"];
-      console.log(this.record);
+      this.record = data;
+
+      // this.record = data["record"];
+      // console.log(this.record);
 
       callback();
     });
