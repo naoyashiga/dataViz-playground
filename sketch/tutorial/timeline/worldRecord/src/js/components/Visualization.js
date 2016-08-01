@@ -3,7 +3,6 @@ import Circle from './Circle';
 
 export default class Visualization {
   constructor(cb) {
-    console.log("aaa");
 
     this.margin = {top: 10, right: 10, bottom: 0, left: 0};
 
@@ -16,15 +15,32 @@ export default class Visualization {
 
     this.circle = null;
 
-    this.loadData(() => {
+    const jsonPath = './datasets/data.json';
 
-      console.log(this.record);
-
-      this.circle = this.createCircle();
-
-    });
+    Promise.resolve()
+    .then(() => this.loadData(jsonPath))
+    .then(() => this.createElements());
 
     cb();
+  }
+
+  loadData(url) {
+    return new Promise((resolve, rejected) => {
+
+      d3.json(url, (error, data) => {
+        if (error) throw error;
+
+        this.record = data["results"];
+
+        resolve();
+      });
+    });
+  }
+
+  createElements() {
+    return new Promise((resolve, rejected) => {
+      this.circle = this.createCircle();
+    });
   }
 
   createViz() {
@@ -35,19 +51,4 @@ export default class Visualization {
     return new Circle(this.svg.graph, this.record, this.svg.xRange);
   }
 
-  loadData(callback) {
-    let url = './datasets/stocks.csv';
-
-    d3.csv(url, (error, data) => {
-      if (error) throw error;
-
-      this.record = data;
-
-      // this.record = data["record"];
-      // console.log(this.record);
-
-      callback();
-    });
-
-  }
 }

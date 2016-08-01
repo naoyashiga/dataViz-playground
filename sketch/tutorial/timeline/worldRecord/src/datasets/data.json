@@ -1,24 +1,29 @@
 {
-  "record": [
+  "results": [
     {
       "name": "Usain Bolt",
-      "time": "9.58"
+      "date": "August 16, 2009",
+      "record": "9.58"
     },
     {
       "name": "Usain Bolt",
-      "time": "9.69"
+      "date": "August 16, 2008",
+      "record": "9.69"
     },
     {
       "name": "Usain Bolt",
-      "time": "9.72"
+      "date": "May 31, 2008",
+      "record": "9.72"
     },
     {
       "name": "Asafa Powell",
-      "time": "9.74"
+      "date": "September 9, 2007",
+      "record": "9.74"
     },
     {
       "name": "Asafa Powell",
-      "time": "9.77"
+      "date": "August 18, 2006",
+      "record": "9.77"
     }
   ]
 }

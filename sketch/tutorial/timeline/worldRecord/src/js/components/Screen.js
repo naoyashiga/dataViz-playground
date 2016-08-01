@@ -6,7 +6,7 @@ export default class Screen {
     .attr('height', height);
 
     this.xRange = d3.scaleLinear()
-    .domain([10000, 30000])
+    .domain([10, 9.4])
     .range([0, width]);
 
     var xAxis = d3.axisBottom(this.xRange).ticks(10);
