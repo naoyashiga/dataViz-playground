@@ -9,10 +9,7 @@ export default class Circle {
     .append("circle")
     .attr("cx", "0")
     // .attr("cx", (d) => xRange(d.record))
-    .attr("cy", (d) => {
-      console.log(yRange(parseTime(d.date)));
-      return -yRange(parseTime(d.date));
-    })
+    .attr("cy", (d) => yRange(parseTime(d.date)))
     .style("fill", (d) => "#000")
     .attr("r", 2);
 

@@ -24,6 +24,7 @@ export default class Visualization {
     cb();
   }
 
+
   loadData(url) {
     return new Promise((resolve, rejected) => {
 
