@@ -1,16 +1,17 @@
 export default class Circle {
-  constructor(parentNode, data, xRange) {
-    console.log(data);
+  constructor(parentNode, data, xRange, yRange) {
+
+    var parseTime = d3.timeParse("%B %d, %Y");
 
     this.element = parentNode.selectAll(".node")
     .data(data)
     .enter().append("g")
     .append("circle")
-    .attr("cx", (d) => {
-      console.log(d);
-      return xRange(d.record);
+    .attr("cx", (d) => xRange(d.record))
+    .attr("cy", (d) => {
+      console.log(yRange(parseTime(d.date)));
+      return -yRange(parseTime(d.date));
     })
-    .attr("cy", "-50")
     .style("fill", (d) => "#000")
     .attr("r", 2);
   }

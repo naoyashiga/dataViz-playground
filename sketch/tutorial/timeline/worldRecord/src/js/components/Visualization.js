@@ -48,7 +48,7 @@ export default class Visualization {
   }
 
   createCircle() {
-    return new Circle(this.svg.graph, this.data, this.svg.xRange);
+    return new Circle(this.svg.graph, this.data, this.svg.xRange, this.svg.yRange);
   }
 
 }
