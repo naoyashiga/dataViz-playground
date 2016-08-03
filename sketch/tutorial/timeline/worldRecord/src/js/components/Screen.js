@@ -10,11 +10,19 @@ export default class Screen {
     .range([0, width]);
 
     this.yRange = d3.scaleTime()
-    .domain([new Date(2016, 8, 15), new Date(2005, 1, 1)])
-    .range([0, height - margin.top - margin.bottom]);
+    .domain([new Date(2020, 8, 15), new Date(2009, 1, 1), new Date(2005, 1, 1)])
+    .range([0, 120, height - margin.top - margin.bottom]);
 
     const xAxis = d3.axisBottom(this.xRange).ticks(20);
-    const yAxis = d3.axisLeft(this.yRange).ticks(10);
+
+    let year = d3.timeYears(new Date(2005, 1, 1), new Date(2009, 1, 1), 1);
+
+    let year2 = d3.timeYears(new Date(2015, 1, 1), new Date(2016, 1, 1), 1);
+
+    let myYears = d3.merge([year2, year]);
+    console.log(myYears);
+
+    const yAxis = d3.axisLeft(this.yRange).tickValues(myYears);
 
     this.element.append("g")
     .attr("class", "xaxis myGraph")
