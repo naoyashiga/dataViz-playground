@@ -10,12 +10,12 @@ export default class Screen {
     .range([0, width]);
 
     this.yRange = d3.scaleTime()
-    .domain([new Date(2020, 8, 15), new Date(2009, 1, 1), new Date(2005, 1, 1)])
+    .domain([new Date(2020, 8, 15), new Date(2009, 1, 1), new Date(1968, 1, 1)])
     .range([0, 120, height - margin.top - margin.bottom]);
 
     const xAxis = d3.axisBottom(this.xRange).ticks(20);
 
-    let year = d3.timeYears(new Date(2005, 1, 1), new Date(2009, 1, 1), 1);
+    let year = d3.timeYears(new Date(1968, 1, 1), new Date(2009, 1, 1), 1);
 
     let year2 = d3.timeYears(new Date(2015, 1, 1), new Date(2016, 1, 1), 1);
 
