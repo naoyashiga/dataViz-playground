@@ -32,7 +32,6 @@ export default class Screen {
     let year3 = d3.timeYears(new Date(1967, 1, 1), new Date(1968, 1, 1), 1);
 
     let myYears = d3.merge([year1, year2, year3]);
-    console.log(myYears);
 
     const yAxis = d3.axisLeft(this.yRange).tickValues(myYears);
 
